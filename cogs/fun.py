@@ -18,9 +18,9 @@ class Fun:
         else:
             if ctx.author.id not in current_dicks:
                 current_dicks[ctx.author.id] = "8" + "="*random.randint(1,20) +"D"
-                await ctx.send("{0.mention}'s dick: **{1}**".format(member, current_dicks[ctx.author.id]))
+                await ctx.send("{0.mention}'s dick: **{1}**".format(ctx.author, current_dicks[ctx.author.id]))
             else:
-                await ctx.send("{0.mention}'s dick: **{1}**".format(member, current_dicks[ctx.author.id]))
+                await ctx.send("{0.mention}'s dick: **{1}**".format(ctx.author, current_dicks[ctx.author.id]))
                  
 def setup(client):
     client.add_cog(Fun(client))
