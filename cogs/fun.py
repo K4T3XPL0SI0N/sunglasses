@@ -8,7 +8,7 @@ class Fun:
         self.client = client
     
     @commands.command()
-    async def penis(self, member : discord.Member):
+    async def penis(self, ctx, member : discord.Member):
       if member.id not in current_dicks:
         current_dicks[member.id] = "8" + "="*random.randint(1,20) +"D"
         await ctx.send("{0.mention}'s dick: **{1}**".format(member, current_dicks[member.id]))
