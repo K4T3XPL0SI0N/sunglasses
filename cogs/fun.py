@@ -5,7 +5,7 @@ current_dicks = {}
 
 class Fun:
     def __init__(self, client):
-    self.client = client
+        self.client = client
     
     @commands.command()
     async def penis(self, member : discord.Member):
