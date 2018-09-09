@@ -3,7 +3,7 @@ from discord.ext import commands
 sys.path.insert(0, './cogs')
 
 bot = commands.Bot(command_prefix='j')
-all_cogs = [] # list of cogs
+all_cogs = ['utility'] # list of cogs
 
 async def gameloops():
     await bot.wait_until_ready()
