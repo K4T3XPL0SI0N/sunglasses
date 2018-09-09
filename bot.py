@@ -1,9 +1,9 @@
 import discord, asyncio, os, sys, math
 from discord.ext import commands
-sys.path.insert(0, './cogs')
+#sys.path.insert(0, './cogs')
 
 bot = commands.Bot(command_prefix='j')
-all_cogs = ['utility'] # list of cogs
+all_cogs = [] # list of cogs
 
 @bot.event
 async def on_ready():
@@ -72,8 +72,9 @@ async def cog_list(ctx):
 if __name__ == "__main__":
     for cog in all_cogs:
         try:
-            bot.load_extension(cog)
+            bot.load_extension('{}/cogs/'.format(os.getcwd()) + cog)
             print('LOADED EXTENSION "{}" PROPERLY!'.format(extension))
         except Exception as err:
             print('ERROR LOADING "{}" FOR REASON [{}]'.format(extension, err))
+            
     bot.run(os.getenv('TKN'))
