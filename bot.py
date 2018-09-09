@@ -2,7 +2,7 @@ import discord, asyncio, os
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix='j')
-all_cogs = [] # list of cogs
+all_cogs = ['utility'] # list of cogs
 
 @bot.event
 async def on_ready():
