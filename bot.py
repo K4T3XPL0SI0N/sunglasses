@@ -1,5 +1,6 @@
-import discord, asyncio, os
+import discord, asyncio, os, sys
 from discord.ext import commands
+sys.path.insert(0, './cogs')
 
 bot = commands.Bot(command_prefix='j')
 all_cogs = ['utility'] # list of cogs
@@ -71,7 +72,7 @@ async def cog_list(ctx):
 if __name__ == "__main__":
     for cog in all_cogs:
         try:
-            bot.load_extension('{}/cogs/'.format(os.getcwd()) + cog)
+            bot.load_extension(cog)
             print('LOADED EXTENSION "{}" PROPERLY!'.format(extension))
         except Exception as err:
             print('ERROR LOADING "{}" FOR REASON [{}]'.format(extension, err))
