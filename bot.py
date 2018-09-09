@@ -5,14 +5,6 @@ sys.path.insert(0, './cogs')
 bot = commands.Bot(command_prefix='j')
 all_cogs = ['utility'] # list of cogs
 
-async def gameloops():
-    await bot.wait_until_ready()
-    while True:
-        await bot.change_presence(activity=discord.Activity(name="in the {0.name}".format(bot.servers[0]), type=discord.ActivityType.playing))
-        await asyncio.sleep(60)
-        await bot.change_presence(activity=discord.Activity(name="hackerman shit", type=discord.ActivityType.playing))
-        await asyncio.sleep(60)
-
 @bot.event
 async def on_ready():
     print("Bot is ready :ok_hand:")
@@ -84,6 +76,4 @@ if __name__ == "__main__":
             print('LOADED EXTENSION "{}" PROPERLY!'.format(extension))
         except Exception as err:
             print('ERROR LOADING "{}" FOR REASON [{}]'.format(extension, err))
-
-    bot.loop.create_task(gameloops())
     bot.run(os.getenv('TKN'))
