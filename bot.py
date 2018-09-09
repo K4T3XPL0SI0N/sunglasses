@@ -70,9 +70,9 @@ async def cog_list(ctx):
     await ctx.send(embed=discord.Embed(title="**Currently Enabled Cogs**",description=p, color=0xed1c24))
 
 if __name__ == "__main__":
-    for cog in all_cogs:
+    for extension in all_cogs:
         try:
-            bot.load_extension(cog)
+            bot.load_extension(extension)
             print('LOADED EXTENSION "{}" PROPERLY!'.format(extension))
         except Exception as err:
             print('ERROR LOADING "{}" FOR REASON [{}]'.format(extension, err))
