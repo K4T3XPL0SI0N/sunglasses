@@ -1,6 +1,5 @@
-import discord, asyncio, os, sys, math
+import discord, asyncio, os
 from discord.ext import commands
-#sys.path.insert(0, './cogs')
 
 bot = commands.Bot(command_prefix='j')
 all_cogs = [] # list of cogs
