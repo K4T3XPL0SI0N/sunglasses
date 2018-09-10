@@ -2,7 +2,7 @@ import discord, asyncio
 from discord.ext import commands
 
 class Information:
-    def __init__(client):
+    def __init__(self, client):
         self.client = client
         
     @commands.command()
