@@ -2,7 +2,7 @@ import discord, asyncio, os, sys
 from discord.ext import commands
 sys.path.insert(0, './cogs')
 
-bot = commands.Bot(command_prefix='j')
+bot = commands.Bot(command_prefix=commands.when_mentioned_or("j"), pm_help=True)
 all_cogs = ['utility', 'fun', 'info'] # list of cogs
 
 @bot.event
