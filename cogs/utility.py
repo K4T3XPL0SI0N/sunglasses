@@ -1,4 +1,4 @@
-import discord, asyncio, os
+import discord, asyncio, os, inspect
 from discord.ext import commands
 
 class Utility:
