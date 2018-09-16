@@ -3,7 +3,7 @@ from discord.ext import commands
 sys.path.insert(0, './cogs')
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("j"), pm_help=True)
-all_cogs = ['utility', 'fun', 'info', 'moderation', 'error'] # list of cogs
+all_cogs = ['utility', 'fun', 'info', 'moderation', 'error','rp'] # list of cogs
 
 @bot.event
 async def on_ready():
