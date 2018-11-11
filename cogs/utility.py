@@ -1,4 +1,4 @@
-import discord, asyncio, inspect, colorama, json, os, io, textwrap, copy, traceback
+import discord, asyncio, inspect, json, os, io, textwrap, copy, traceback
 from contextlib import redirect_stdout
 from discord.ext import commands
 
