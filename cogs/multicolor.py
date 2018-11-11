@@ -2,9 +2,9 @@ import discord, asyncio, random
 from discord.ext import commands
 
 INFORMATION = {
-    "GUILD ID": 488210121063923742,
-    "ROLE ID" : 497201609147940884,
-    "SHIFT DELAY" : 2
+    "GUILD ID": 468119888058122241,
+    "ROLE ID" : 468120454180372480,
+    "SHIFT DELAY" : 1.5
 }
 
 #INFORMATION['SHIFT DELAY'] = INFORMATION['SHIFT DELAY'] * 500 # Changes seconds to milliseconds
