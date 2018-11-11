@@ -1,4 +1,4 @@
-import discord, asyncio
+import discord, asyncio, random
 from discord.ext import commands
 
 INFORMATION = {
