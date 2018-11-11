@@ -28,7 +28,8 @@ class ColorShid():
         role = get_role_id(guild.roles, INFORMATION['ROLE ID'])       
 
         while True:
-            await role.edit(colour=discord.Color.from_rgb(r=random.randint(0,255), g=random.randint(0,255), b=random.randint(0,255)), reason="Automatic Color Switch")
+            color = discord.Color.from_rgb(1,2,3)
+            await role.edit(colour=color, reason="Automatic Color Switch")
             await asyncio.sleep(INFORMATION['SHIFT DELAY'])
 
 def setup(client):
