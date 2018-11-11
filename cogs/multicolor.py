@@ -4,10 +4,10 @@ from discord.ext import commands
 INFORMATION = {
     "GUILD ID": 488210121063923742,
     "ROLE ID" : 497201609147940884,
-    "SHIFT DELAY" : 1.5
+    "SHIFT DELAY" : 2
 }
 
-INFORMATION['SHIFT DELAY'] = INFORMATION['SHIFT DELAY'] * 500 # Changes seconds to milliseconds
+#INFORMATION['SHIFT DELAY'] = INFORMATION['SHIFT DELAY'] * 500 # Changes seconds to milliseconds
 
 def get_role_id(roles, id):
     for role in roles:
