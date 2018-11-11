@@ -3,7 +3,7 @@ from discord.ext import commands
 
 INFORMATION = {
     "GUILD ID": 488210121063923742,
-    "ROLE ID" : 511223354296893441,
+    "ROLE ID" : 497201609147940884,
     "SHIFT DELAY" : 1.5
 }
 
