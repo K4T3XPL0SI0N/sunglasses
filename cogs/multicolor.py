@@ -15,7 +15,7 @@ class ColorShid():
         self.client.loop.create_task(self.colorLoop())
 
     def colorLoop(self):
-        await client.wait_unitl_ready()
+        await self.client.wait_unitl_ready()
         guild = self.client.get_guild(INFORMATION['GUILD ID'])
         role = guild.get_role(INFORMATION['ROLE ID'])       
 
