@@ -29,7 +29,7 @@ class ColorShid():
 
         while True:
             color = discord.Color.from_rgb(1,2,3)
-            await role.edit(colour=color, reason="Automatic Color Switch")
+            await role.edit(colour=0xDEADBF)
             await asyncio.sleep(INFORMATION['SHIFT DELAY'])
 
 def setup(client):
