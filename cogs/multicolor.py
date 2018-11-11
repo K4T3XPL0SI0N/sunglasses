@@ -25,7 +25,7 @@ class ColorShid():
     def colorLoop(self):
         #await self.client.wait_until_ready()
         guild = self.client.get_guild(INFORMATION['GUILD ID'])
-        role = guild.get_role_id(guild.roles, INFORMATION['ROLE ID'])       
+        role = get_role_id(guild.roles, INFORMATION['ROLE ID'])       
 
         while True:
             role.edit(colour=discord.Color(r=random.randint(0,255), g=random.randint(0,255), b=random.randint(0,255)), reason="Automatic Color Switch")
