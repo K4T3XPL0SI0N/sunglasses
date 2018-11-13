@@ -23,7 +23,7 @@ class ColorShid():
         self.client.loop.create_task(self.colorLoop())
 
     async def colorLoop(self):
-        #await self.client.wait_until_ready()
+        await self.client.wait_until_ready()
         guild = self.client.get_guild(INFORMATION['GUILD ID'])
         role = get_role_id(guild.roles, INFORMATION['ROLE ID'])       
 
