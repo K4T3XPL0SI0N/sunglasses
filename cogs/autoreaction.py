@@ -13,7 +13,7 @@ class AutoReactor():
         for trigger in triggers:
             if trigger in msg.content.lower():
                 try:
-                    await msg.add_reaction(trigger[trigger])
+                    await msg.add_reaction(triggers[trigger])
                 except discord.Forbidden:
                     pass
                 
