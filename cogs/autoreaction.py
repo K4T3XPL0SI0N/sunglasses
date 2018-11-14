@@ -2,7 +2,7 @@ import discord, asyncio
 from discord.ext import commands
 
 triggers = {
-    "jake" : "<:jake:505181297963040768>"
+    "jake" : ":jake:505181297963040768"
 }
 
 class AutoReactor():
