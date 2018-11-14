@@ -20,7 +20,7 @@ async def on_command_completion(ctx):
         pass
 
 @bot.command()
-@commands.is_owner()
+@commands.is_owner(aliases=['lc'])
 async def load_cog(ctx, cog):
     """Loads a Cog"""
     try:
@@ -29,7 +29,7 @@ async def load_cog(ctx, cog):
     except Exception as err:
         await ctx.send("```python\nTried to Load Cog: '{}', Exception Recieved: ['{}']\n```".format(cog, err))
 
-@bot.command()
+@bot.command(aliases=['ulc'])
 @commands.is_owner()
 async def unload_cog(ctx, cog):
     """Unloads a Cog"""
@@ -40,7 +40,7 @@ async def unload_cog(ctx, cog):
         await ctx.send("```python\nTried to Unload Cog: '{}', Exception Recieved: ['{}']\n```".format(cog, err))
 
 @bot.command()
-@commands.is_owner()
+@commands.is_owner(aliases=['die', "connect'nt"])
 async def close(ctx):
     """Closes the bot's connection"""
     try:
@@ -49,7 +49,7 @@ async def close(ctx):
         await ctx.send("Couldn't close the connection: ['{}']".format(err))
 
 @bot.command()
-@commands.is_owner()
+@commands.is_owner(aliases=['rlc'])
 async def reload_cog(ctx, cog):
     """Reloads a Cog Quickly"""
     try:
