@@ -7,14 +7,16 @@ class Moderation:
 
     @commands.command(aliases=['b', 'banish'])
     @commands.has_permissions(ban_members=True)
-    async def ban(self, ctx, member : discord.Member, *, reason : str):
+    async def ban(self, ctx, member : discord.Member, *, reason : str = None):
         """Bans a member, then dm's them a reason (if provided)"""
+        if reason == None:
+            reason = "No reason provided." 
         try:
             await member.send(":hammer:**You were banned from **`{}`** for the reason: **`{}`**!**".format(ctx.guild.name, reason))
         except:
             pass
         try:
-            await member.ban()
+            await member.ban(reason=reason)
         except Exception as err:
             await ctx.send(":warning: **Couldn't ban `{}`!**\n*reason: `{}`".format(member, err))
         await ctx.send(embed=discord.Embed(title=':hammer: User banned!', description="{} has been banned for `{}`!".format(member, reason), color=0xFF0000))
@@ -70,7 +72,7 @@ class Moderation:
                 finished_bans.append(member.id)
         await ctx.send("Users banned: `{}`\nFailed bans: `{}`".format(len(finished_bans), len(failed_bans)))
 
-    @commands.command()
+    @commands.command(aliases=['lock'])
     @commands.has_permissions(manage_channels=True)
     async def lockdown(self, ctx):
         role = ctx.guild.default_role
