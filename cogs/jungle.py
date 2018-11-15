@@ -32,11 +32,11 @@ class AutoReactor():
         else:
             embed = discord.Embed(title="Invite Leaderboard", description="You have no invite links in this server, or they've all expired.")
         
-        for i in range(10):
-            userObj = self.client.get_user(tuple(inviters)[i])
+        for n in range(10):
+            userObj = self.client.get_user(tuple(inviters)[n])
             
             try:
-                embed.add_field(name="{1} [`{0}`]".format(str(tuple(inviters)[i]), userObj), value=str(inviters[str(tuple(inviters)[i])])) # this is confusing uwu
+                embed.add_field(name="{1} [`{0}`]".format(str(tuple(inviters)[n]), userObj), value=str(inviters[(tuple(inviters)[n])]) # this is confusing uwu
             except KeyError:
                 embed.add_field(name="user left server", value="---")
         await ctx.send("```py\n{}\n````".format(tuple(inviters)))
