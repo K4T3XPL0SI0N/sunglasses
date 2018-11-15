@@ -22,18 +22,21 @@ class AutoReactor():
         invites = await ctx.guild.invites()
         inviters = {}
         for i in invites:
-            if i.inviter not in inviters:
-                inviters[i.inviter] = 0
-            inviters[i.inviter] += i.uses
+            if i.inviter.id not in inviters:
+                inviters[i.inviter.id] = 0
+            inviters[i.inviter.id] += i.uses
         lb = sorted(inviters, reverse=True)
         
-        if str(ctx.author) in inviters:
+        if str(ctx.author.id) in inviters:
             embed = discord.Embed(title="Invite Leaderboard", description="Your invite(s) have been used `{}` times!".format(inviters[str(ctx.author)]))
         else:
             embed = discord.Embed(title="Invite Leaderboard", description="You have no invite links in this server, or they've all expired.")
         
         for i in range(10):
-            embed.add_field(name=str(tuple(inviters[i])), value=str(inviters[str(tuple(inviters[i]))])) # this is confusing uwu
+            userObj = await ctx.guild.get_user(tuple(inviters[i]))
+            
+            
+            embed.add_field(name="{1} [`{0}`]".format(str(tuple(inviters[i])), userObj), value=str(inviters[str(tuple(inviters[i]))])) # this is confusing uwu
         return await ctx.send(embed=embed)
             
                 
