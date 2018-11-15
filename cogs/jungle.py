@@ -25,7 +25,7 @@ class AutoReactor():
             if i.inviter.id not in inviters:
                 inviters[i.inviter.id] = 0
             inviters[i.inviter.id] += i.uses
-        lb = sorted(inviters, reverse=True)
+        inviters = sorted(inviters, reverse=True)
         
         if str(ctx.author.id) in inviters:
             embed = discord.Embed(title="Invite Leaderboard", description="Your invite(s) have been used `{}` times!".format(inviters[str(ctx.author)]))
@@ -36,9 +36,9 @@ class AutoReactor():
             userObj = self.client.get_user(tuple(inviters)[n])
             
             try:
-                embed.add_field(name="{1} [`{0}`]".format(str(tuple(inviters)[n]), userObj), value=str(inviters[tuple(inviters)[n]])) # this is confusing uwu
+                embed.add_field(name="{1} [`{0}`]".format(str(tuple(inviters)[n]), userObj), value=str(inviters[tuple(inviters)[n]]), inline=False) # this is confusing uwu
             except KeyError:
-                embed.add_field(name="user left server", value="---")
+                embed.add_field(name="user left server", value="---", inline=False)
         await ctx.send("```py\n{}\n````".format(tuple(inviters)))
         return await ctx.send(embed=embed)
             
