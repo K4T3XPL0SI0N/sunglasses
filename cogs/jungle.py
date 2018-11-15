@@ -38,7 +38,7 @@ class AutoReactor():
             try:
                 embed.add_field(name="{1} [`{0}`]".format(str(tuple(inviters)[i]), userObj), value=str(inviters[str(tuple(inviters)[i])])) # this is confusing uwu
             except KeyError:
-                embed.add_field(name="user left server", value=value=str(inviters[str(tuple(inviters)[i])]))
+                embed.add_field(name="user left server", value=str(inviters[str(tuple(inviters)[i])]))
         return await ctx.send(embed=embed)
             
                 
