@@ -33,10 +33,10 @@ class AutoReactor():
             embed = discord.Embed(title="Invite Leaderboard", description="You have no invite links in this server, or they've all expired.")
         
         for i in range(10):
-            userObj = await self.client.get_user(tuple(inviters[i]))
+            userObj = await self.client.get_user(tuple(inviters)[i])
             
             
-            embed.add_field(name="{1} [`{0}`]".format(str(tuple(inviters[i])), userObj), value=str(inviters[str(tuple(inviters[i]))])) # this is confusing uwu
+            embed.add_field(name="{1} [`{0}`]".format(str(tuple(inviters)[i]), userObj), value=str(inviters[str(tuple(inviters)[i])])) # this is confusing uwu
         return await ctx.send(embed=embed)
             
                 
