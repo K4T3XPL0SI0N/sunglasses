@@ -15,33 +15,7 @@ class AutoReactor():
                 try:
                     await msg.add_reaction(triggers[trigger])
                 except discord.Forbidden:
-                    pass
-                
-    @commands.command()
-    async def invites(self, ctx):
-        invites = await ctx.guild.invites()
-        inviters = {}
-        for i in invites:
-            if i.inviter.id not in inviters:
-                inviters[i.inviter.id] = 0
-            inviters[i.inviter.id] += i.uses
-        invitersLB = sorted(inviters, reverse=True)
-        
-        if str(ctx.author.id) in inviters:
-            embed = discord.Embed(title="Invite Leaderboard", description="Your invite(s) have been used `{}` times!".format(invitersLB[str(ctx.author)]))
-        else:
-            embed = discord.Embed(title="Invite Leaderboard", description="You have no invite links in this server, or they've all expired.")
-        
-        for n in range(10):
-            userObj = self.client.get_user(tuple(invitersLB)[n])
-            
-            try:
-                embed.add_field(name="{1} [`{0}`]".format(str(tuple(invitersLB)[n]), userObj), value=str(invitersLB[tuple(invitersLB)[n]]), inline=False) # this is confusing uwu
-            except KeyError:
-                embed.add_field(name="user left server", value="---", inline=False)
-        await ctx.send("```py\n{}\n````".format(tuple(invitersLB)))
-        return await ctx.send(embed=embed)
-            
+                    pass       
                 
 def setup(client):
     client.add_cog(AutoReactor(client))
