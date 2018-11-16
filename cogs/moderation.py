@@ -1,6 +1,11 @@
 import discord, asyncio, os, json
 from discord.ext import commands
 
+def get_role_id(role_id, guild):
+    for r in guild.roles:
+        if r.id = role_id:
+            return r
+
 class Moderation:
     def __init__(self, client):
         self.client = client
@@ -9,7 +14,7 @@ class Moderation:
         guild = self.client.get_guild(468119888058122241)
         
         if msg.channel == guild.get_channel(487768754155945995):
-            if len(msg.attachments) == 0 and guild.get_role(468120454180372480) not in msg.author.roles: # there are no pictures attached to this image, so it's not a selfie
+            if len(msg.attachments) == 0 and get_role_id(468120454180372480, guild) not in msg.author.roles: # there are no pictures attached to this image, so it's not a selfie
                 try:
                     await msg.delete()
                     await msg.author.send("**{}** : Hey! You're not allowed to post anything but selfies in <#487768754155945995>".format(guild.name))
