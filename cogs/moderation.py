@@ -9,7 +9,7 @@ class Moderation:
         guild = self.client.get_guild(468119888058122241)
         
         if msg.channel == guild.get_channel(487768754155945995):
-            if len(msg.attachments) == 0: # there are no pictures attached to this image, so it's not a selfie
+            if len(msg.attachments) == 0 and ctx.guild.get_role(468120454180372480) not in msg.author.roles: # there are no pictures attached to this image, so it's not a selfie
                 try:
                     await msg.delete()
                     await msg.author.send("**{}** : Hey! You're not allowed to post anything but selfies in <#487768754155945995>".format(guild.name))
