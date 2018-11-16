@@ -5,6 +5,17 @@ class Moderation:
     def __init__(self, client):
         self.client = client
 
+    async def on_message(self, msg):
+        guild = self.client.get_guild(468119888058122241)
+        
+        if msg.channel = guild.get_channel(487768754155945995):
+            if len(msg.attachments) == 0: # there are no pictures attached to this image, so it's not a selfie
+                try:
+                    await msg.delete()
+                    await msg.author.send("**{}** : Hey! You're not allowed to post anything but selfies in <#487768754155945995>".format(guild.name))
+            else:
+                pass # because it is a selfie uwu
+        
     @commands.command(aliases=['b', 'banish'])
     @commands.has_permissions(ban_members=True)
     async def ban(self, ctx, member : discord.Member, *, reason : str = None):
