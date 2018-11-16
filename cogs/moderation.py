@@ -13,6 +13,8 @@ class Moderation:
                 try:
                     await msg.delete()
                     await msg.author.send("**{}** : Hey! You're not allowed to post anything but selfies in <#487768754155945995>".format(guild.name))
+                except:
+                    pass
             else:
                 pass # because it is a selfie uwu
         
