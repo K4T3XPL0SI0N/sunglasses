@@ -3,7 +3,7 @@ from discord.ext import commands
 
 def get_role_id(role_id, guild):
     for r in guild.roles:
-        if r.id = role_id:
+        if r.id == role_id:
             return r
 
 class Moderation:
