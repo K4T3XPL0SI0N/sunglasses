@@ -30,7 +30,7 @@ class AutoReactor():
         self.client = client
         
     async def on_message(self, msg):
-        if msg.channel != self.client.get_channel(confessionsChannel):
+        if msg.channel != self.client.get_channel(confessChannel):
             for trigger in triggers:
                 if trigger in msg.content.lower():
                     try:
