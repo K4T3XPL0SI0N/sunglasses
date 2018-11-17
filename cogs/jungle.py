@@ -1,4 +1,4 @@
-import discord, asyncio
+import discord, asyncio, string, random
 from discord.ext import commands
 
 def getRole(id : int, guild : discord.Guild):
@@ -6,8 +6,19 @@ def getRole(id : int, guild : discord.Guild):
         if role.id == id:
             return role
 
+n = string.ascii_uppercase + string.digits
+n = tuple(n)
+
+def createID(length : int):
+    re = ""
+    for i in range(length):
+        re += random.choice(n)
+    return re
+
+        
 confessionsRole = 513432922154467332
 confessionsChannel = 513431665603903489
+confessChannel = 513452033886519306
         
 triggers = {
     "jake" : ":jake:505181297963040768",
@@ -19,12 +30,26 @@ class AutoReactor():
         self.client = client
         
     async def on_message(self, msg):
-        for trigger in triggers:
-            if trigger in msg.content.lower():
-                try:
-                    await msg.add_reaction(triggers[trigger])
-                except discord.Forbidden:
-                    pass       
+        if msg.channel != self.client.get_channel(confessionsChannel):
+            for trigger in triggers:
+                if trigger in msg.content.lower():
+                    try:
+                        await msg.add_reaction(triggers[trigger])
+                    except discord.Forbidden:
+                        pass
+        else:
+            authorRoles = msg.author.roles
+            if getRole(confessionsRole, self.client.get_guild(468119888058122241)) in authorRoles:
+                channel = self.client.get_channel(confessionsChannel)
+                conID = createID(16)
+                em = discord.Embed(colour=0xffff87, description = msg.content)
+                em.set_author(name="Confession")
+                await msg.channel.send(":thumbsup:")
+                await msg.delete()
+            else:
+                await msg.channel.send(":thumbsdown:")
+                await msg.delete()
+                    
     
     @commands.guild_only()
     @commands.command()
@@ -36,14 +61,7 @@ class AutoReactor():
     
     @commands.command()
     async def confess(self, ctx, *, confession : str):
-        authorRoles = ctx.author.roles
-        if getRole(confessionsRole, self.client.get_guild(468119888058122241)) in authorRoles:
-            channel = self.client.get_channel(confessionsChannel)
-            await channel.send("```css\n[ NEW CONFESSION ]\n```\n{}".format(confession))
-            await ctx.send(":thumbsup:")
-            await ctx.message.delete()
-        else:
-            return await ctx.send("You aren't a {0.name}".format(getRole(confessionsRole, self.client.get_guild(468119888058122241)).name))
-                
+        
+              
 def setup(client):
     client.add_cog(AutoReactor(client))
