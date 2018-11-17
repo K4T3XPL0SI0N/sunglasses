@@ -37,7 +37,7 @@ class AutoReactor():
                         await msg.add_reaction(triggers[trigger])
                     except discord.Forbidden:
                         pass
-        elif msg.channel.id == confessChannel:
+        elif msg.channel.id == confessChannel and msg.author.id != 488205899782160415:
             print(msg.content + "\n" + msg.channel.name)
             authorRoles = msg.author.roles
             if getRole(confessionsRole, self.client.get_guild(468119888058122241)) in authorRoles:
