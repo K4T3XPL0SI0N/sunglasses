@@ -25,6 +25,8 @@ triggers = {
     "ego" : ":ego:484169666806415378"
 }
 
+cons = {}
+
 class AutoReactor():
     def __init__(self, client):
         self.client = client
@@ -39,16 +41,18 @@ class AutoReactor():
                         pass
         elif msg.channel.id == confessChannel and msg.author.id != 488205899782160415:
             authorRoles = msg.author.roles
-            if getRole(confessionsRole, self.client.get_guild(468119888058122241)) in authorRoles:
+            try:
                 channel = self.client.get_channel(confessionsChannel)
                 conID = createID(16)
+                cons[conID] = msg.author
                 em = discord.Embed(colour=0xffff87, description = msg.content)
                 em.set_author(name="Confession")
+                em.set_footer(name=conID)
                 e = await msg.channel.send(":thumbsup:")
                 await msg.delete()
                 await channel.send(embed=em)
-            else:
-                e = await msg.channel.send(":thumbsdown:")
+            except Exception as err: 
+                e = await msg.channel.send(":thumbsdown: `{}`".format(err))
                 await msg.delete()
             await asyncio.sleep(5)
             await e.delete()
@@ -62,5 +66,9 @@ class AutoReactor():
             returnValue += f"{i}, "
         return await ctx.send(f"Here's a list of the current autoreactions, these are __global__. ```py\n{returnValue}\n```")
               
+    @commands.command(hidden=True)
+    async def concheck(self, ctx, conID):
+        return str(cons[conID].id)
+        
 def setup(client):
     client.add_cog(AutoReactor(client))
