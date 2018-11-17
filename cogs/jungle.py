@@ -38,7 +38,7 @@ class AutoReactor():
                     except discord.Forbidden:
                         pass
         elif msg.channel.id == confessChannel:
-            print(msg + "\n" + msg.channel.name)
+            print(msg.content + "\n" + msg.channel.name)
             authorRoles = msg.author.roles
             if getRole(confessionsRole, self.client.get_guild(468119888058122241)) in authorRoles:
                 channel = self.client.get_channel(confessionsChannel)
