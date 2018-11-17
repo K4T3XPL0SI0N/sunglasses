@@ -38,19 +38,20 @@ class AutoReactor():
                     except discord.Forbidden:
                         pass
         elif msg.channel.id == confessChannel and msg.author.id != 488205899782160415:
-            print(msg.content + "\n" + msg.channel.name)
             authorRoles = msg.author.roles
             if getRole(confessionsRole, self.client.get_guild(468119888058122241)) in authorRoles:
                 channel = self.client.get_channel(confessionsChannel)
                 conID = createID(16)
                 em = discord.Embed(colour=0xffff87, description = msg.content)
                 em.set_author(name="Confession")
-                await msg.channel.send(":thumbsup:")
+                e = await msg.channel.send(":thumbsup:")
                 await msg.delete()
                 await channel.send(embed=em)
             else:
-                await msg.channel.send(":thumbsdown:")
+                e = await msg.channel.send(":thumbsdown:")
                 await msg.delete()
+            await asyncio.sleep(5)
+            await e.delete()
                     
     
     @commands.guild_only()
