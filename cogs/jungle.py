@@ -59,10 +59,6 @@ class AutoReactor():
         for i in trigger:
             returnValue += f"{i}, "
         return await ctx.send(f"Here's a list of the current autoreactions, these are __global__. ```py\n{returnValue}\n```")
-    
-    @commands.command()
-    async def confess(self, ctx, *, confession : str):
-        
               
 def setup(client):
     client.add_cog(AutoReactor(client))
