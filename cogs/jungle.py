@@ -47,7 +47,7 @@ class AutoReactor():
                 cons[conID] = msg.author
                 em = discord.Embed(colour=0xffff87, description = msg.content)
                 em.set_author(name="Confession")
-                em.set_footer(name=conID)
+                em.set_footer(text=conID)
                 e = await msg.channel.send(":thumbsup:")
                 await msg.delete()
                 await channel.send(embed=em)
@@ -66,6 +66,7 @@ class AutoReactor():
             returnValue += f"{i}, "
         return await ctx.send(f"Here's a list of the current autoreactions, these are __global__. ```py\n{returnValue}\n```")
               
+    @commands.is_owner()
     @commands.command(hidden=True)
     async def concheck(self, ctx, conID):
         return str(cons[conID].id)
