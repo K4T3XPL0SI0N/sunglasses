@@ -46,6 +46,7 @@ class AutoReactor():
                 em.set_author(name="Confession")
                 await msg.channel.send(":thumbsup:")
                 await msg.delete()
+                await channel.send(embed=em)
             else:
                 await msg.channel.send(":thumbsdown:")
                 await msg.delete()
