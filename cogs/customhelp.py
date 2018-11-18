@@ -24,9 +24,9 @@ class HelpCommands():
             for command in self.client.commands:
                 if command.cog_name in cogs:
                     if command.hidden != True:
-                        cogs[command.cog_name].append(command) # add command to the containing cog's list
+                        cogs[command.cog_name].append(command.name) # add command to the containing cog's list
                     elif command.hidden == True and ctx.author.id == appInfo.owner.id:
-                        cogs[command.cog_name].append(command) # if the command is hidden add it only if the help user is the bot owner
+                        cogs[command.cog_name].append(command.name) # if the command is hidden add it only if the help user is the bot owner
                 else:
                     print("Uhh... Something went wrong with the help command uwu")
 
