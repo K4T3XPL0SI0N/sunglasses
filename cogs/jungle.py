@@ -77,6 +77,16 @@ class AutoReactor():
     @commands.command(hidden=True)
     async def concheck(self, ctx, conID):
         return str(cons[conID].id)
+    
+    @commads.has_permissions(ban_members=True)
+    @commands.command()
+    async def fban(self, ctx, user : discord.Member, *, reason):
+        await ctx.message.delete()
+        msg = await ctx.send(":hammer: **{0}** has been banned by {1} for the reason : `{2}`".format(user, ctx.author, reason))
+        await asyncio.sleep(10)
+        await msg.edit(content="just kiddin' they're still here ;)")
+        await asyncio.sleep(5)
+        await msg.delete()
         
 def setup(client):
     client.add_cog(AutoReactor(client))
