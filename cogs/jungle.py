@@ -19,6 +19,7 @@ def createID(length : int):
 confessionsRole = 513432922154467332
 confessionsChannel = 513431665603903489
 confessChannel = 513452033886519306
+confessionsLogging = 513538555050721285 # temporary channel, just for testing etc.
         
 triggers = {
     "jake" : ":jake:505181297963040768",
@@ -56,6 +57,7 @@ class AutoReactor():
                 e = await msg.channel.send(":thumbsup:")
                 await msg.delete()
                 await channel.send(embed=em)
+                await self.client.get_channel(confessionsLogging).send(":telescope: **Confession #{0}** `{1}` was sent by **{0}** `[{0.id}]`".format(confessionsNumber, conID, ctx.author))
             except Exception as err: 
                 e = await msg.channel.send(":thumbsdown: `{}`".format(err))
                 await msg.delete()
