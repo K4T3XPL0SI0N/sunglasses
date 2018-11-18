@@ -44,10 +44,13 @@ class AutoReactor():
             try:
                 channel = self.client.get_channel(confessionsChannel)
                 conID = createID(16)
-                cons[conID] = msg.author
+                cons[conID] = {'author' : msg.author, content : msg.content}
                 em = discord.Embed(colour=0xffff87, description = msg.content)
                 em.set_author(name="Confession")
                 em.set_footer(text=conID)
+                if len(msg.attachments) > 0:
+                    if msg.attachments[0][-4:] in ('.jpg', '.png', '.gif'):
+                        em.set_image(url = msg.attachments[0].proxy_url)
                 e = await msg.channel.send(":thumbsup:")
                 await msg.delete()
                 await channel.send(embed=em)
