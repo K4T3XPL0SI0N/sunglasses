@@ -9,7 +9,7 @@ class HelpCommands():
         self.client.remove_command('help')
 
     @commands.command(aliases=['h'])
-    async def help(self, ctx, *, com : commands.command = None):
+    async def help(self, ctx, *, com : str = None):
 
         appInfo = await self.client.application_info()
 
@@ -41,7 +41,15 @@ class HelpCommands():
             await ctx.send(embed=helpEmbed)
         else:
             # send help regarding the command "com" unless the command doesn't exist, then return "Command Not Found" error
-            print(com.usage)
-
+            for cmd in self.client.commands:
+                ca = [cmd.name]
+                for a in cmd.aliases:
+                    ca.append(a)
+                if com in ca:
+                    return ctx.send(embed=discord.Embed(title="'{}' command".format(cmd.name), description = "{0.help}\n\n*Usage:* `{0.usage}`".format(cmd), colour=0xFFFFFF))
+                else:
+                    pass # this command is not the command we are looking for
+                                    
+                                    
 def setup(client):
     client.add_cog(HelpCommands(client))
