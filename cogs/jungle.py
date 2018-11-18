@@ -20,6 +20,7 @@ confessionsRole = 513432922154467332
 confessionsChannel = 513431665603903489
 confessChannel = 513452033886519306
 confessionsLogging = 513538555050721285 # temporary channel, just for testing etc.
+mutedRole = 468143090863964182
         
 triggers = {
     "jake" : ":jake:505181297963040768",
@@ -81,11 +82,14 @@ class AutoReactor():
     @commands.has_permissions(ban_members=True)
     @commands.command()
     async def fban(self, ctx, user : discord.Member, *, reason = None):
+        muted = getRole(mutedRole, self.client.get_guild(468119888058122241))
         if reason == None:
             reason = "None specified"
         await ctx.message.delete()
         msg = await ctx.send(":hammer: **{0}** has been banned by {1} for the reason : `{2}`".format(user, ctx.author, reason))
+        await user.add_roles(muted)
         await asyncio.sleep(10)
+        await user.remove_roles(muted)
         await msg.edit(content="just kiddin' they're still here ;)")
         await asyncio.sleep(5)
         await msg.delete()
