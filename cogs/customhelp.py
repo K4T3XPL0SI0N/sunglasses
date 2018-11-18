@@ -19,7 +19,7 @@ class HelpCommands():
             for cog in self.client.cogs:
                 cogs[cog] = [] # this will store each command
 
-            for command in self.client.commands():
+            for command in self.client.commands:
                 if command.cog_name in cogs:
                     if command.hidden != True:
                         cogs[command.cog_name].append(command) # add command to the containing cog's list
