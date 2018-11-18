@@ -17,7 +17,7 @@ class HelpCommands():
             # send regular help message, list of all commands
             cogs = {} # this will store the cogs that exist, to help organize commands into special categories
             cogList = list(self.client.cogs)
-            cogList.append("None")
+            cogList.append(None)
             for cog in cogList:
                 cogs[cog] = [] # this will store each command
 
