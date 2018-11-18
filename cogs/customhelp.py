@@ -9,7 +9,7 @@ class HelpCommands():
         self.client.remove_command('help')
 
     @commands.command(aliases=['h'])
-    async def help(self, ctx, *, com = None):
+    async def help(self, ctx, *, com = commands.command):
 
         appInfo = await self.client.application_info()
 
@@ -41,7 +41,7 @@ class HelpCommands():
             await ctx.send(embed=helpEmbed)
         else:
             # send help regarding the command "com" unless the command doesn't exist, then return "Command Not Found" error
-            await ctx.send("It don't work yet")
+            print(com.usage)
 
 def setup(client):
     client.add_cog(HelpCommands(client))
