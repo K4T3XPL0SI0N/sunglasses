@@ -44,7 +44,7 @@ class AutoReactor():
             try:
                 channel = self.client.get_channel(confessionsChannel)
                 conID = createID(16)
-                cons[conID] = {'author' : msg.author, content : msg.content}
+                cons[conID] = {'author' : msg.author, 'content' : msg.content}
                 em = discord.Embed(colour=0xffff87, description = msg.content)
                 em.set_author(name="Confession")
                 em.set_footer(text=conID)
