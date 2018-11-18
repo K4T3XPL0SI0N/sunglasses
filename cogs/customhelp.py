@@ -46,7 +46,7 @@ class HelpCommands():
                 for a in cmd.aliases:
                     ca.append(a)
                 if com in ca:
-                    return await ctx.send(embed=discord.Embed(title="'{}' command".format(cmd.name), description = "{0.help}\n\n*Usage:* `{0.usage}`".format(cmd), colour=0xFFFFFF))
+                    return await ctx.send(embed=discord.Embed(title="'{}' command".format(cmd.name), description = "{0.help}\n\n*Usage:* `{1}{0.signature}`".format(cmd, _commandPrefix), colour=0xFFFFFF))
                 else:
                     pass # this command is not the command we are looking for
                                     
