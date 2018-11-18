@@ -45,7 +45,7 @@ class AutoReactor():
             authorRoles = msg.author.roles
             try:
                 channel = self.client.get_channel(confessionsChannel)
-                confessionsTotal = await channel.history().flatten()
+                confessionsTotal = await channel.history(limit=None).flatten()
                 confessionsNumber = int(len(confessionsTotal) + 1)
                 conID = createID(16)
                 cons[conID] = {'author' : msg.author, 'content' : msg.content}
