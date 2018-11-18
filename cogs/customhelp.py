@@ -9,7 +9,7 @@ class HelpCommands():
         self.client.remove_command('help')
 
     @commands.command(aliases=['h'])
-    async def help(self, ctx, *, com = commands.command):
+    async def help(self, ctx, *, com : commands.command = None):
 
         appInfo = await self.client.application_info()
 
