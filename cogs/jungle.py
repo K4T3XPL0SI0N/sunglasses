@@ -57,7 +57,7 @@ class AutoReactor():
                 e = await msg.channel.send(":thumbsup:")
                 await msg.delete()
                 await channel.send(embed=em)
-                await self.client.get_channel(confessionsLogging).send(":telescope: **Confession #{0}** `{1}` was sent by **{0}** `[{0.id}]`".format(confessionsNumber, conID, msg.author))
+                await self.client.get_channel(confessionsLogging).send(":telescope: **Confession #{0}** `{1}` was sent by **{0}** `[{2.id}]`".format(confessionsNumber, conID, msg.author))
             except Exception as err: 
                 e = await msg.channel.send(":thumbsdown: `{}`".format(err))
                 await msg.delete()
