@@ -19,7 +19,7 @@ class HelpCommands():
             cogList = list(self.client.cogs)
             cogList.append("None")
             for cog in cogList:
-                cogs[cog.name] = [] # this will store each command
+                cogs[cog] = [] # this will store each command
 
             for command in self.client.commands:
                 if command.cog_name in cogs:
