@@ -34,7 +34,7 @@ class HelpCommands():
             helpEmbed.set_thumbnail(url=appInfo.icon_url)
             for c in cogs:
                 if len(cogs[c]) > 0:
-                    helpEmbed.add_field(name=str(c) + " [`{}`]".format(len(cogs[c])), value=", ".join(cogs[c])) # this field contains the name of the cog and all the commands in a list like, this, and, that
+                    helpEmbed.add_field(name=str(c) + " [`{}`]".format(len(cogs[c])), value=", ".join(cogs[c]), inline=False) # this field contains the name of the cog and all the commands in a list like, this, and, that
                 else:
                     pass # It wouldn't add a cog that has zero commands because no help is needed for that command
             
