@@ -49,7 +49,7 @@ class AutoReactor():
                 em.set_author(name="Confession")
                 em.set_footer(text=conID)
                 if len(msg.attachments) > 0:
-                    if msg.attachments[0][-4:] in ('.jpg', '.png', '.gif'):
+                    if str(msg.attachments[0].filename)[-4:] in ('.jpg', '.png', '.gif'):
                         em.set_image(url = msg.attachments[0].proxy_url)
                 e = await msg.channel.send(":thumbsup:")
                 await msg.delete()
